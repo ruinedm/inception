@@ -1,0 +1,15 @@
+services:
+  nginx:
+    build:
+      context: ./srcs/requirements/nginx
+      dockerfile: Dockerfile
+    ports:
+      - "443:443"
+  
+  mariadb:
+    build:
+      context: ./srcs/requirements/mariadb
+      dockerfile: Dockerfile
+    ports:
+      - "3306:3306"
+  
