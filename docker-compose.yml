@@ -5,11 +5,32 @@ services:
       dockerfile: Dockerfile
     ports:
       - "443:443"
-  
+    networks:
+      - inception
+    depends_on:
+      - wordpress
+
   mariadb:
     build:
       context: ./srcs/requirements/mariadb
       dockerfile: Dockerfile
     ports:
       - "3306:3306"
-  
+    networks:
+      - inception
+
+  wordpress:
+    build:
+      context: ./srcs/requirements/wordpress
+      dockerfile: Dockerfile
+    ports:
+      - "9000:9000"
+    depends_on:
+      - mariadb
+    networks:
+      - inception
+
+
+networks:
+  inception:
+    driver: bridge

@@ -10,9 +10,6 @@ COPY ./setup_nginx.sh setup_nginx.sh
 
 RUN chmod +x setup_nginx.sh && ./setup_nginx.sh
 
-WORKDIR /var/www/html
-
-COPY ./src .
 
 
 EXPOSE 443

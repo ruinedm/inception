@@ -13,7 +13,6 @@ RUN apt-get update && \
     php-zip \
     curl \
     && apt-get clean
-
 COPY . .
 
 RUN chmod +x ./setup_wordpress.sh

@@ -9,7 +9,8 @@ curl -o wait-for-it.sh https://raw.githubusercontent.com/vishnubob/wait-for-it/m
 chmod +x wait-for-it.sh
 
 if [ ! -d "/var/www/html" ]; then
+    echo "Downloading and setting up WordPress..."
     mkdir -p /var/www/html
+    wp core download --path=/var/www/html --allow-root
 fi
-echo "Downloading and setting up WordPress..."
-wp core download --path=/var/www/html --allow-root
+

@@ -12,6 +12,7 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
     wp core install --url=http://localhost --title="ruined" --admin_user=ruined --admin_password=123 --allow-root --path=/var/www/html
     wp user create user user@gmail.com --role=author --user_pass=123 --allow-root --path=/var/www/html
 else
-    echo "WordPress already configured"
+    echo "WordPress already configured LOL"
 fi
-php-fpm7 -F
+echo "Starting php-fpm..."
+php-fpm8.2 -F
