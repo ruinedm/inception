@@ -16,6 +16,7 @@ clean:
 	# docker rmi $(docker images -q)
 
 
+rebuild: stop build all
 
 fclean: 
 	docker system prune -a -f
