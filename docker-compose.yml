@@ -21,6 +21,8 @@ services:
       - "3306:3306"
     networks:
       - inception
+    volumes:
+      - mariadb-data:/var/lib/mysql 
 
   wordpress:
     build:
@@ -43,3 +45,4 @@ networks:
 
 volumes:
   wordpress-data:
+  mariadb-data:

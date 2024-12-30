@@ -10,9 +10,9 @@ chmod +x wait-for-it.sh
 
 if [ ! -d "/var/www/html" ]; then
     echo "Downloading and setting up WordPress..."
-    mkdir -p /var/www/html
     cd /var/www/html
     wp core download --allow-root
+    wp config create --dbname=wp_db --dbuser=ruined --dbpass=123 --dbhost=mariadb --allow-root 
     echo "Configuring PHP to listen on ip and not unix socket..."
     sed -i "s/^listen\s*=\s*.*/listen = 0.0.0.0:9000/" /etc/php/8.2/fpm/pool.d/www.conf
 fi
