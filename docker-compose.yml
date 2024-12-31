@@ -34,7 +34,15 @@ services:
       - mariadb
     volumes:
       - wordpress-data:/var/www/html
-
+    environment:
+      - ADMIN_USERNAME=${ADMIN_USERNAME}
+      - ADMIN_MAIL=${ADMIN_MAIL}
+      - USER_MAIL=${USER_MAIL}
+      - USER_USERNAME=${USER_USERNAME}
+      - WEBSITE_NAME=${WEBSITE_NAME}
+      - DOMAIN_NAME=${DOMAIN_NAME}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
     networks:
       - inception
 

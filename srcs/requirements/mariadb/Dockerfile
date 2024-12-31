@@ -2,7 +2,7 @@ FROM debian:stable
 
 RUN apt-get update && apt-get install -y mariadb-server && apt-get clean 
 
-COPY ./setup_mariadb.sh setup_mariadb.sh
+COPY . . 
 
 RUN chmod +x setup_mariadb.sh && ./setup_mariadb.sh
 

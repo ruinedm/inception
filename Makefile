@@ -18,7 +18,13 @@ clean:
 
 rebuild: stop build all
 
-fclean: 
+clean_volumes:
+	docker system prune -a --volumes -f
+
+
+fclean: clean_volumes stop
+
+delete: 
 	docker system prune -a -f
 
 re: fclean all
