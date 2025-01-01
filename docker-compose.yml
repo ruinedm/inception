@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   nginx:
     build:
@@ -5,11 +7,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "443:443"
-    networks:
-      - inception
     volumes:
-      - wordpress-data:/var/www/html
-
+      - wordpress_data:/var/www/html
     depends_on:
       - wordpress
 
@@ -19,10 +18,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3306:3306"
-    networks:
-      - inception
     volumes:
-      - mariadb-data:/var/lib/mysql 
+      - mariadb_data:/var/lib/mysql
 
   wordpress:
     build:
@@ -33,7 +30,7 @@ services:
     depends_on:
       - mariadb
     volumes:
-      - wordpress-data:/var/www/html
+      - wordpress_data:/var/www/html
     environment:
       - ADMIN_USERNAME=${ADMIN_USERNAME}
       - ADMIN_MAIL=${ADMIN_MAIL}
@@ -43,14 +40,17 @@ services:
       - DOMAIN_NAME=${DOMAIN_NAME}
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}
-    networks:
-      - inception
-
-
-networks:
-  inception:
-    driver: bridge
 
 volumes:
-  wordpress-data:
-  mariadb-data:
+  wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/ruined/data/wordpress
+      o: bind
+  mariadb_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/ruined/data/mariadb
+      o: bind
