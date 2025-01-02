@@ -13,8 +13,7 @@ RUN apt-get update && \
     php-zip \
     curl \
     && apt-get clean
-COPY . .
-
+COPY ./tools .
 RUN chmod +x ./setup_wordpress.sh
 RUN chmod +x ./entrypoint.sh
 RUN ./setup_wordpress.sh
