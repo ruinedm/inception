@@ -8,12 +8,11 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
     echo "Downloading and setting up WordPress..."
     cd /var/www/html
     wp core download --allow-root
-    wp config create --dbname=$DB_NAME --dbuser=$DB_USER --dbpass=123 --dbhost=mariadb --allow-root 
-    wp core install --url=http://localhost --title=$WEBSITE_NAME --admin_user=$ADMIN_USERNAME --admin_password=123 --admin_email=$ADMIN_MAIL --allow-root 
-    wp user create $USER_USERNAME $USER_MAIL --role=author --user_pass=123 --allow-root 
+    wp config create --dbname=$DB_NAME --dbuser=$DB_USER --dbpass=$DB_PASS --dbhost=mariadb --allow-root 
+    wp core install --url=http://localhost --title=$WEBSITE_NAME --admin_user=$ADMIN_USERNAME --admin_password=$ADMIN_PASS --admin_email=$ADMIN_MAIL --allow-root 
+    wp user create $USER_USERNAME $USER_MAIL --role=author --user_pass=$USER_PASS --allow-root 
 fi
 
-cat /var/www/html/.wp_installed
 
 echo "Starting php-fpm..."
 php-fpm8.2 -F

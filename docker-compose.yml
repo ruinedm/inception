@@ -21,6 +21,10 @@ services:
       - "3306:3306"
     volumes:
       - mariadb_data:/var/lib/mysql
+    environment:
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
 
   wordpress:
     build:
@@ -41,18 +45,8 @@ services:
       - DOMAIN_NAME=${DOMAIN_NAME}
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
 
-  adminer:
-    build:
-      context: ./srcs/bonus/adminer
-      dockerfile: Dockerfile
-    ports:
-      - "900:900"
-    depends_on:
-      - mariadb
-    volumes:
-      - adminer_data:/var/www/adminer
-    
 
 volumes:
   wordpress_data:

@@ -20,7 +20,8 @@ rebuild: stop build all
 
 clean_volumes:
 	docker system prune -a --volumes -f
-
+	sudo rm -rf /home/ruined/data/wordpress/*
+	sudo rm -rf  /home/ruined/data/mariadb/*
 
 fclean: clean_volumes stop
 
