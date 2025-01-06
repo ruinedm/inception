@@ -46,6 +46,21 @@ services:
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}
       - DB_PASS=${DB_PASS}
+      - ADMIN_PASS=${ADMIN_PASS}
+      - USER_PASS=${USER_PASS}
+
+  adminer:
+    build:
+      context: ./srcs/bonus/adminer
+      dockerfile: Dockerfile
+    ports:
+      - "9001:9001"
+    depends_on:
+      - mariadb
+    volumes:
+      - adminer_data:/var/www/adminer
+    environment:
+      ADMINER_DEFAULT_SERVER: mariadb
 
 
 volumes:
