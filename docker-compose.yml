@@ -12,6 +12,8 @@ services:
       - adminer_data:/var/www/adminer
     depends_on:
       - wordpress
+    networks:
+      - inception
 
   mariadb:
     build:
@@ -25,6 +27,8 @@ services:
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}
       - DB_PASS=${DB_PASS}
+    networks:
+      - inception
 
   wordpress:
     build:
@@ -34,6 +38,7 @@ services:
       - "9000:9000"
     depends_on:
       - mariadb
+      - redis
     volumes:
       - wordpress_data:/var/www/html
     environment:
@@ -48,6 +53,8 @@ services:
       - DB_PASS=${DB_PASS}
       - ADMIN_PASS=${ADMIN_PASS}
       - USER_PASS=${USER_PASS}
+    networks:
+      - inception
 
   adminer:
     build:
@@ -61,7 +68,17 @@ services:
       - adminer_data:/var/www/adminer
     environment:
       ADMINER_DEFAULT_SERVER: mariadb
+    networks:
+      - inception
 
+  redis:
+    build:
+      context: ./srcs/bonus/redis
+      dockerfile: Dockerfile
+    ports:
+      - "6379:6379"
+    networks:
+      - inception
 
 volumes:
   wordpress_data:
@@ -82,3 +99,8 @@ volumes:
       type: none
       device: /home/ruined/data/adminer
       o: bind
+
+networks:
+  inception:
+    driver: bridge
+    name: inception

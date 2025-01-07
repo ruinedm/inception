@@ -1,4 +1,4 @@
-FROM debian:stable
+FROM debian:bullseye
 
 RUN apt-get update && \
     apt-get install -y \
@@ -14,9 +14,7 @@ RUN apt-get update && \
     curl \
     && apt-get clean
 COPY ./tools .
-RUN chmod +x ./setup_wordpress.sh
-RUN chmod +x ./entrypoint.sh
-RUN ./setup_wordpress.sh
+RUN chmod +x ./setup_wordpress.sh ./entrypoint.sh && ./setup_wordpress.sh
 
 EXPOSE 9000
 
