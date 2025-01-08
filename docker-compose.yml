@@ -80,6 +80,35 @@ services:
     networks:
       - inception
 
+  ftp:
+    build:
+      context: ./srcs/bonus/ftp
+      dockerfile: Dockerfile
+    ports:
+      - "20:20"
+      - "21:21"
+      - "21100-21110:21100-21110"
+    environment:
+      - FTP_USER=${FTP_USER}
+      - FTP_PASS=${FTP_PASS}
+    volumes:
+      - wordpress_data:/home/${FTP_USER}
+    networks:
+      - inception
+
+  cadvisor:
+    build:
+      context: ./srcs/bonus/cadvisor
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - inception
+    volumes:
+      - "/:/rootfs:ro"
+      - "/var/run:/var/run:ro"
+      - "/sys:/sys:ro"
+      - "/var/lib/docker:/var/lib/docker:ro"
 volumes:
   wordpress_data:
     driver: local
