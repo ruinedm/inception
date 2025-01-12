@@ -84,6 +84,9 @@ services:
     build:
       context: ./srcs/bonus/ftp
       dockerfile: Dockerfile
+      args:
+        FTP_USER: ${FTP_USER}
+        FTP_PASS: ${FTP_PASS}
     ports:
       - "20:20"
       - "21:21"
