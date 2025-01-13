@@ -15,5 +15,6 @@ echo "pasv_min_port=21100" >> /etc/vsftpd.conf
 echo "pasv_max_port=21110" >> /etc/vsftpd.conf
 echo "allow_writeable_chroot=YES" >> /etc/vsftpd.conf
 echo "chroot_local_user=YES" >> /etc/vsftpd.conf
+echo "background=NO" >> /etc/vsftpd.conf
 mkdir -p /var/run/vsftpd/empty
 chmod 555 /var/run/vsftpd/empty
