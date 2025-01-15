@@ -1,10 +1,12 @@
 FROM debian:bullseye
 
-RUN apt-get update && apt-get install -y nginx openssl && apt-get clean 
+ARG DOMAIN_NAME
+
+RUN apt-get update && apt-get install -y nginx openssl gettext && apt-get clean 
 
 
 
-COPY ./tools/nginx.conf /etc/nginx/nginx.conf
+COPY ./tools/nginx.conf /etc/nginx/nginx.conf.temp
 
 COPY ./tools/setup_nginx.sh setup_nginx.sh
 

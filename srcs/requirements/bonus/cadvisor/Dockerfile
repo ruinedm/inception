@@ -11,4 +11,4 @@ RUN curl -sSL https://github.com/google/cadvisor/releases/download/v0.49.2/cadvi
 
 EXPOSE 8080
 
-CMD ["/usr/local/bin/cadvisor", "-logtostderr", "-port=8080"]
+CMD ["/usr/local/bin/cadvisor", "-port=8080"]

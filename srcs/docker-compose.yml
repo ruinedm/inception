@@ -1,10 +1,10 @@
-version: '3.8'
-
 services:
   nginx:
     build:
-      context: ./srcs/requirements/nginx
+      context: ./requirements/nginx
       dockerfile: Dockerfile
+      args:
+        DOMAIN_NAME: ${DOMAIN_NAME}
     ports:
       - "443:443"
     volumes:
@@ -17,10 +17,8 @@ services:
 
   mariadb:
     build:
-      context: ./srcs/requirements/mariadb
+      context: ./requirements/mariadb
       dockerfile: Dockerfile
-    ports:
-      - "3306:3306"
     volumes:
       - mariadb_data:/var/lib/mysql
     environment:
@@ -32,10 +30,8 @@ services:
 
   wordpress:
     build:
-      context: ./srcs/requirements/wordpress
+      context: ./requirements/wordpress
       dockerfile: Dockerfile
-    ports:
-      - "9000:9000"
     depends_on:
       - mariadb
       - redis
@@ -58,10 +54,8 @@ services:
 
   adminer:
     build:
-      context: ./srcs/bonus/adminer
+      context: ./requirements/bonus/adminer
       dockerfile: Dockerfile
-    ports:
-      - "9001:9001"
     depends_on:
       - mariadb
     volumes:
@@ -73,16 +67,14 @@ services:
 
   redis:
     build:
-      context: ./srcs/bonus/redis
+      context: ./requirements/bonus/redis
       dockerfile: Dockerfile
-    ports:
-      - "6379:6379"
     networks:
       - inception
 
   ftp:
     build:
-      context: ./srcs/bonus/ftp
+      context: ./requirements/bonus/ftp
       dockerfile: Dockerfile
       args:
         FTP_USER: ${FTP_USER}
@@ -101,7 +93,7 @@ services:
 
   cadvisor:
     build:
-      context: ./srcs/bonus/cadvisor
+      context: ./requirements/bonus/cadvisor
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
@@ -112,9 +104,10 @@ services:
       - "/var/run:/var/run:ro"
       - "/sys:/sys:ro"
       - "/var/lib/docker:/var/lib/docker:ro"
+
   myweb:
     build:
-      context: ./srcs/bonus/myweb
+      context: ./requirements/bonus/myweb
       dockerfile: Dockerfile
     networks:
       - inception
@@ -124,19 +117,19 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/ruined/data/wordpress
+      device: /home/mboukour/data/wordpress
       o: bind
   mariadb_data:
     driver: local
     driver_opts:
       type: none
-      device: /home/ruined/data/mariadb
+      device: /home/mboukour/data/mariadb
       o: bind
   adminer_data:
     driver: local
     driver_opts:
       type: none
-      device: /home/ruined/data/adminer
+      device: /home/mboukour/data/adminer
       o: bind
 
 networks:
