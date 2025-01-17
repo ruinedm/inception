@@ -4,7 +4,9 @@ curl -o wait-for-it.sh https://raw.githubusercontent.com/vishnubob/wait-for-it/m
 chmod +x wait-for-it.sh
 
 
-
+echo "Configuring php fpm to listen on port 9001...."
 sed -i "s/^listen\s*=\s*.*/listen = 0.0.0.0:9001/" /etc/php/7.4/fpm/pool.d/www.conf
 
+
+echo ""
 mkdir -p /run/php

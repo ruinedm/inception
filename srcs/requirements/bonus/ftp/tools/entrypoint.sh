@@ -18,3 +18,5 @@ echo "chroot_local_user=YES" >> /etc/vsftpd.conf
 echo "background=NO" >> /etc/vsftpd.conf
 mkdir -p /var/run/vsftpd/empty
 chmod 555 /var/run/vsftpd/empty
+
+vsftpd

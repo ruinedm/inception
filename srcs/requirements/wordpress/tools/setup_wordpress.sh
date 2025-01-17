@@ -10,4 +10,4 @@ chmod +x wait-for-it.sh
 
 sed -i "s/^listen\s*=\s*.*/listen = 0.0.0.0:9000/" /etc/php/7.4/fpm/pool.d/www.conf
 
-mkdir -p /run/php && chown -R www-data:www-data /run/php
+mkdir -p /run/php

@@ -9,7 +9,7 @@ ARG FTP_PASS
 
 COPY ./tools .
 
-RUN chmod +x setup_ftp.sh && ./setup_ftp.sh
+RUN chmod +x entrypoint.sh
 
-ENTRYPOINT ["vsftpd"]
+ENTRYPOINT ["bash", "./entrypoint.sh"]
 
