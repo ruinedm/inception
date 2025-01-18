@@ -6,7 +6,7 @@ RUN apt update && apt install -y \
     libpcap0.8 \
     && rm -rf /var/lib/apt/lists/*
 
-RUN curl -sSL https://github.com/google/cadvisor/releases/download/v0.49.2/cadvisor-v0.49.2-linux-amd64 -o /usr/local/bin/cadvisor && \
+RUN curl -L https://github.com/google/cadvisor/releases/download/v0.49.2/cadvisor-v0.49.2-linux-amd64 -o /usr/local/bin/cadvisor && \
     chmod +x /usr/local/bin/cadvisor
 
 EXPOSE 8080

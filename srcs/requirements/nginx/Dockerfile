@@ -1,6 +1,10 @@
 FROM debian:bullseye
 
 ARG DOMAIN_NAME
+ARG STATE
+ARG LOCALITY
+ARG ORG
+ARG COUNTRY
 
 RUN apt-get update && apt-get install -y nginx openssl gettext && apt-get clean 
 
