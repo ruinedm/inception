@@ -23,7 +23,7 @@ clean_volumes:
 	sudo rm -rf /home/mboukour/data/wordpress/*
 	sudo rm -rf  /home/mboukour/data/mariadb/*
 
-fclean: clean_volumes stop
+fclean: stop clean_volumes
 
 delete: 
 	docker system prune -a -f

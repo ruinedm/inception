@@ -7,4 +7,3 @@ openssl req -new -x509 -key /etc/ssl/private/sslkey.key -out /etc/ssl/certs/sslc
 
 echo "Setting up domain name in config file..."
 envsubst '$DOMAIN_NAME' < /etc/nginx/nginx.conf.temp > /etc/nginx/nginx.conf && rm -f /etc/nginx/nginx.conf.temp
-cat /etc/nginx/nginx.conf
