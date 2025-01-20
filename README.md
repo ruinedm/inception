@@ -58,7 +58,7 @@ or
 ```bash
   make deamon
 ```
-4. **Access your services
+4. **Access your services**
 
 - **Nginx**: Access the website via https://yourdomain.com (replace with your actual domain name).
 - **Adminer**: Manage your MariaDB database at http://localhost:8080.
