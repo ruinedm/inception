@@ -31,6 +31,7 @@ Before getting started, ensure that you have the following installed:
    ```
 2. **Configure environment variables**
 Create a .env file with the necessary values. This file will contain values such as database credentials, site details, and user information:
+```env
 DOMAIN_NAME=yourdomain.com
 STATE=YourState
 LOCALITY=YourCity
@@ -48,8 +49,8 @@ ADMIN_PASS=youradminpassword
 USER_PASS=youruserpassword
 FTP_USER=yourftpuser
 FTP_PASS=yourftppassword
-
-3. **Build and start the containers**
+```
+4. **Build and start the containers**
 Run Docker Compose to build and start all the services.
 ```bash
   make
