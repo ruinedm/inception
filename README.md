@@ -1,4 +1,4 @@
-# Dockerized Web Application Setup
+# INCEPTION: Dockerized Web Application Setup
 
 This project sets up a full-stack Dockerized environment with multiple services including Nginx, WordPress, MariaDB, Redis, FTP, Adminer, cAdvisor, and more. The goal is to provide a simple yet flexible solution for building and managing web applications using Docker containers.
 
