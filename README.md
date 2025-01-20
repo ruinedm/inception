@@ -82,6 +82,6 @@ This project uses Docker volumes for data persistence:
 - **wordpress_data**: Stores the WordPress data.
 - **mariadb_data**: Stores the MariaDB data.
 - **adminer_data**: Stores the Adminer data.
-- 
+
 ## Networking
 The containers are connected via a Docker bridge network named inception to ensure secure communication between them.
